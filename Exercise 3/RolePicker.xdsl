@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network1" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="Tired">
+			<state id="Yes" />
+			<state id="Some" />
+			<state id="No" />
+			<probabilities>0.3 0.5 0.2</probabilities>
+		</cpt>
+		<cpt id="Mood">
+			<state id="Happy" />
+			<state id="Indifferent" />
+			<state id="Frustrated" />
+			<probabilities>0.6 0.1 0.3</probabilities>
+		</cpt>
+		<cpt id="Map_age">
+			<state id="Six_months_or_older" />
+			<state id="Less_than_six_months" />
+			<probabilities>0.8 0.2</probabilities>
+		</cpt>
+		<cpt id="Practise_this_month">
+			<state id="A_lot" />
+			<state id="Some" />
+			<state id="Little" />
+			<probabilities>0.2 0.3 0.5</probabilities>
+		</cpt>
+		<cpt id="Sympathetic">
+			<state id="Very" />
+			<state id="Some" />
+			<state id="Little" />
+			<probabilities>0.6 0.3 0.1</probabilities>
+		</cpt>
+		<decision id="Class_picked">
+			<state id="Support" />
+			<state id="Tank" />
+			<state id="Defence" />
+			<state id="Offense" />
+		</decision>
+		<cpt id="Strategic">
+			<state id="Very" />
+			<state id="Some" />
+			<state id="Little" />
+			<parents>Practise_this_month Map_age</parents>
+			<probabilities>0.7 0.3 0 0.4 0.4 0.2 0.3 0.5 0.2 0.3 0.4 0.3 0.05 0.25 0.7 0.05 0.15 0.8</probabilities>
+		</cpt>
+		<cpt id="Care_for_winning_matches">
+			<state id="Yes" />
+			<state id="No" />
+			<parents>Mood Tired Class_picked</parents>
+			<probabilities>0 1 0.4 0.6 0.05 0.95 0.3 0.7 0.1 0.9 0.5 0.5 0.15 0.85 0.35 0.65 0.2 0.8 0.7 0.3 0.2 0.8 0.8 0.2 0.6 0.4 0.6 0.4 0.2 0.8 0.4 0.6 0.55 0.45 0.55 0.45 0.15 0.85 0.45 0.55 0.45 0.55 0.45 0.55 0.05 0.95 0.35 0.65 0.9 0.09999999999999998 1 0 0.5 0.5 0.9 0.09999999999999998 0.8 0.2 0.9 0.09999999999999998 0.4 0.6 0.8 0.2 0.75 0.25 0.85 0.15 0.35 0.65 0.75 0.25</probabilities>
+		</cpt>
+		<cpt id="Fun">
+			<state id="Very" />
+			<state id="Some" />
+			<state id="Little" />
+			<parents>Mood Class_picked</parents>
+			<probabilities>1 0 0 1 0 0 0.8 0.2 0 0.7 0.2 0.1 0.7 0.2 0.1 0.7 0.2 0.1 0.7 0.2 0.1 0.7 0.2 0.1 0.6 0.3 0.1 0.4 0.3 0.3 0.5 0.3 0.2 0 0 1</probabilities>
+		</cpt>
+		<cpt id="Seriousness">
+			<state id="Very" />
+			<state id="Some" />
+			<state id="Little" />
+			<parents>Care_for_winning_matches Fun</parents>
+			<probabilities>0.9 0.1 0 0.7 0.2 0.1 0.5 0.2 0.3 0 0.05 0.95 0.1 0.1 0.8 0 0 1</probabilities>
+		</cpt>
+		<cpt id="Reflexes">
+			<state id="Good" />
+			<state id="Okay" />
+			<state id="Poor" />
+			<parents>Tired Practise_this_month Class_picked</parents>
+			<probabilities>0.1 0.1 0.8 0.25 0.4 0.35 0.1 0.2 0.7 0.3 0.3 0.4 0.05 0.1 0.85 0.2 0.35 0.45 0.05 0.2 0.75 0.25 0.25 0.5 0 0.1 0.9 0.1 0.2 0.7 0 0.2 0.8 0.2 0.25 0.55 0.15 0.1 0.75 0.25 0.15 0.6 0.15 0.2 0.65 0.35 0.25 0.4 0.1 0.1 0.8 0.2 0.2 0.6 0.1 0.2 0.7 0.3 0.25 0.45 0.05 0.1 0.85 0.15 0.2 0.65 0.05 0.2 0.75 0.25 0.25 0.5 0.3 0.3 0.4 0.6 0.3 0.1 0.4 0.3 0.3 0.8 0.15 0.05 0.25 0.3 0.45 0.55 0.3 0.15 0.35 0.3 0.35 0.75 0.15 0.1 0.2 0.3 0.5 0.5 0.3 0.2 0.3 0.3 0.4 0.7 0.15 0.15</probabilities>
+		</cpt>
+		<cpt id="Team_player">
+			<state id="High_degree" />
+			<state id="Low_degree" />
+			<parents>Sympathetic Strategic Class_picked</parents>
+			<probabilities>0.9 0.09999999999999998 1 0 0.6 0.4 0.5 0.5 0.9 0.09999999999999998 0.9 0.09999999999999998 0.4 0.6 0.3 0.7 0.8 0.2 0.9 0.09999999999999998 0.3 0.7 0.2 0.8 0.7 0.3 0.9 0.09999999999999998 0.6 0.4 0.4 0.6 0.6 0.4 0.85 0.15 0.5 0.5 0.5 0.5 0.55 0.45 0.8 0.2 0.4 0.6 0.45 0.55 0.5 0.5 0.4 0.6 0.9 0.09999999999999998 1 0 0.2 0.8 0.5 0.5 0.7 0.3 0.8 0.2 0.1 0.9 0.5 0.5 0.9 0.09999999999999998 0.5 0.5</probabilities>
+		</cpt>
+		<utility id="Utility">
+			<parents>Reflexes Seriousness Team_player</parents>
+			<utilities>0.3 0.8 0.4 0.7 0.6 0.5 0.7 0.3 1 0.7 0.4 0.7 1 0 0.8 0.2 0.4 0.8</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5590.0" name="Network1" faultnameformat="nodestate">
+			<node id="Tired">
+				<name>Tired</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>129 87 169 112</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Mood">
+				<name>Mood</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>135 389 180 417</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Map_age">
+				<name>Map age</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>174 185 235 223</position>
+				<barchart active="true" width="229" height="72" />
+			</node>
+			<node id="Practise_this_month">
+				<name>Practise this month</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>118 278 193 324</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Sympathetic">
+				<name>Sympathetic</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>132 476 194 514</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Care_for_winning_matches">
+				<name>Care for winning matches</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>649 272 711 310</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Strategic">
+				<name>Strategic</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>325 290 387 328</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Reflexes">
+				<name>Reflexes</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>671 160 711 185</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Class_picked">
+				<name>Class picked</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>135 640 208 666</position>
+				<barchart active="true" width="160" height="105" />
+			</node>
+			<node id="Utility">
+				<name>Utility</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1083 479 1128 511</position>
+				<barchart active="true" width="254" height="90" />
+			</node>
+			<node id="Fun">
+				<name>Fun</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>657 412 719 450</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Seriousness">
+				<name>Seriousness</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>832 422 905 467</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Team_player">
+				<name>Team player</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>656 545 727 589</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<textbox>
+				<caption>Current states</caption>
+				<font color="000000" name="Arial" size="8" />
+				<position>115 32 184 46</position>
+			</textbox>
+			<textbox>
+				<caption>Choices</caption>
+				<font color="000000" name="Arial" size="8" />
+				<position>145 572 184 586</position>
+			</textbox>
+			<textbox>
+				<caption>Consequences</caption>
+				<font color="000000" name="Arial" size="8" />
+				<position>649 101 722 115</position>
+			</textbox>
+		</genie>
+	</extensions>
+</smile>
