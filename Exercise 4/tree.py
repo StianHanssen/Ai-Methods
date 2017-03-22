@@ -1,17 +1,17 @@
 class Node:
 
-    def __init__(self, data):
-        self.__data = data
-        self.__children = {}
+    def __init__(self, examples):
+        self.examples = examples
+        self.children = {}
 
     def add_child(self, edge, child):
-        self.__children[edge] = child
+        self.children[edge] = child
 
-    def print_tree(self):
-        if not self.__children:
-            return "[" + str(self.__data) + "]"
-        else:
-            temp = "[" + str(self.__data) + " "
-        for key, _ in self.__children.items():
-            temp += self.__children[key].print_tree()
-        return temp + "]"
+    def get_child(self, edge):
+        return self.children[edge]
+
+    def has_children(self):
+        return len(self.children) != 0
+
+    def get_examples(self):
+        return self.examples
