@@ -33,7 +33,6 @@ def main():
     training_examples = get_examples()
 
     root = decision_tree_learinng(training_examples, list(range(len(training_examples[0])-1)), [], True)
-    print(root.print_tree())
     print("Result:", test(root, test_examples), r"% correct")
 
 
