@@ -17,8 +17,8 @@ def decision_tree_learinng(examples, attributes, parent_examples, random=False):
         node_picked = Node(A)
         attributes.remove(A)
         for i, subset in get_subsets(examples, A):
-            child = decision_tree_learinng(subset, attributes, examples, random)
-            node_picked.add_child(i, child)
+            sub_tree = decision_tree_learinng(subset, attributes[:], examples, random)
+            node_picked.add_child(i, sub_tree)
     return node_picked
 
 def test(node, examples):  # Checks if the classification given by the tree matches data
@@ -32,7 +32,7 @@ def main():
     test_examples = get_examples(False)
     training_examples = get_examples()
 
-    root = decision_tree_learinng(training_examples, list(range(len(training_examples[0])-1)), [], True)
+    root = decision_tree_learinng(training_examples, list(range(len(training_examples[0])-1)), [], False)
     print("Result:", test(root, test_examples), r"% correct")
 
 
